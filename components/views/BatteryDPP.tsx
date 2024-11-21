@@ -40,7 +40,7 @@ export default function BatteryDPP() {
     const batteryDPP = data.dpp
     return (
       <main className="container py-6 flex justify-center flex-col mx-auto gap-y-6">
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <Card className="col-span-1">
             <CardHeader>
               <CardTitle>Manufacture Info</CardTitle>
@@ -54,11 +54,11 @@ export default function BatteryDPP() {
               <p>Manufacturing Date: {batteryDPP.manufacturingDate}</p>
             </CardContent>
           </Card>
-          <Card className="col-span-3">
+          <Card className="col-span-1 lg:col-span-3">
             <CardHeader>
               <CardTitle>Details</CardTitle>
             </CardHeader>
-            <CardContent className="flex justify-around">
+            <CardContent className="flex justify-around flex-wrap gap-4">
               <div>
                 <h2>Basics</h2>
                 <ul className="list-disc pl-8">
