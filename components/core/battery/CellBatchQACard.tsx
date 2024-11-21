@@ -7,18 +7,10 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { BatteryScan, CellBatchQAInfo } from '@/lib/types/battery'
-import Image from 'next/image'
+import { CellBatchQAInfo } from '@/lib/types/battery'
+
+import ScansTable from './ScansTable'
 
 interface CellBatchQACardProps {
   data: CellBatchQAInfo
@@ -108,45 +100,5 @@ export default function CellBatchQACard({ data }: CellBatchQACardProps) {
         </Tabs>
       </CardContent>
     </Card>
-  )
-}
-
-function ScansTable({ scans }: { scans: BatteryScan[] }) {
-  return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-[100px]">Title</TableHead>
-          <TableHead>Date</TableHead>
-          <TableHead>Image</TableHead>
-          <TableHead>Image Size</TableHead>
-          <TableHead className="text-right">Requirements Met</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {scans.map((scan: BatteryScan) => (
-          <TableRow key={scan.scanTitle + scan.scanDate}>
-            <TableCell className="font-medium">{scan.scanTitle}</TableCell>
-            <TableCell>{scan.scanDate}</TableCell>
-            <TableCell>
-              <Image
-                width={150}
-                height={150}
-                src={scan.scanImage}
-                alt={scan.scanTitle}
-              />
-            </TableCell>
-            <TableCell>{scan.scanImageSize}</TableCell>
-            <TableCell className="text-right">
-              <Badge
-                className={`${scan.QARequirementsMet === 'Yes' ? 'bg-lime-700' : 'bg-red-600'}`}
-              >
-                {scan.QARequirementsMet}
-              </Badge>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
   )
 }
